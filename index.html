@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>kitUI弹层组件</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="./need/docs.min.css">
+    <link rel="stylesheet" href="./need/kiuUI.css">
+    <style>
+        /* .bs-docs-section h4 {
+            text-indent: 2em;
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="bs-docs-header">
+        <div class="container">
+            <h1>kitUI弹层组件</h1>
+        </div>
+    </div>
+    <div class="container bs-docs-container" id="main">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="bs-docs-section">
+                    <h1 class="page-header">options参数</h1>
+                    <p class="lead">用于配置弹层实例</p>
+                </div>
+                <div class="bs-docs-section">
+                    <h3 class="page-header">
+                        <code>type</code>-设置弹层类型
+                    </h3>
+                    <h4>类型：String</h4>
+                    <h4>默认值：'dialog' ('dialog'表示信息框, 'loading'表示加载层)</h4>
+                    <h4>可选</h4>
+                    <div class="bs-callout bs-callout-info">
+                        <p><code>
+                            kitUI.dailog({
+                                type: 'dialog',
+                                content: 'dialog'
+                            })
+                        </code></p>
+                        <button class="btn btn-primary" id="type-dialog">dialog</button>
+                        <p></p>
+                        <p>
+                            <code>
+                                                    kitUI.dailog({
+                                                        type: 'loading',
+                                                    })
+                                                </code>
+                        </p>
+                        <button class="btn btn-primary" id="type-loading-show">loading_show</button>
+                        <button class="btn btn-primary" id="type-loading-close">loading_close</button>
+                    </div>
+                </div>
+                <div class="bs-docs-section">
+                    <h3 class="page-header">
+                        <code>content</code>-设置主体文本信息
+                    </h3>
+                    <h4>类型：String</h4>
+                    <h4>必选</h4>
+                    <div class="bs-callout bs-callout-info" id="callout-helper-context-color-specificity">
+                        <h4>content可以传入html字符串</h4>
+                        <p><code>
+                            kitUI.dialog({
+                                content: '&lt;p style="color: red;"&gt;我是红色的信息&lt;/p&gt;'
+                            })
+                        </code></p>
+                        <button class="btn btn-primary" id="content-html">html_content</button>
+                    </div>
+                </div>
+                <div class="bs-docs-section">
+                    <h3 class="page-header">
+                        <code>title</code>-设置弹层标题
+                    </h3>
+                    <h4>类型：String || Array</h4>
+                    <h4>默认值：null</h4>
+                    <h4>可选，数组第二个参数是自定义标题样式</h4>
+                    <div class="bs-callout bs-callout-info">
+                        <p><code>
+                            kitUI.dialog({
+                                title: '标题',
+                                content: '白色标题背景'
+                            })
+                        </code></p>
+                        <button class="btn btn-primary" id="title-string">title_string</button>
+                        <p></p>
+                        <p><code>
+                            kitUI.dialog({
+                                title: ['标题', 'background-color: #eee;'],
+                                content: '灰色标题背景'
+                            })
+                        </code></p>
+                        <button class="btn btn-primary" id="title-array">title_array</button>
+                    </div>
+                </div>
+                <div class="bs-docs-section">
+                    <h3 class="page-header">
+                        <code>time</code>-控制自动关闭时间
+                    </h3>
+                    <h4>类型：Number</h4>
+                    <h4>默认不开启，单位毫秒</h4>
+                    <h4>可选</h4>
+                    <div class="bs-callout bs-callout-info">
+                        <p><code>
+                            kitUI.dialog({
+                                time: 2000,
+                                content: '两秒后关闭'
+                            })
+                        </code></p>
+                        <button class="btn btn-primary" id="time">time</button>
+                    </div>
+                </div>
+                <div class="bs-docs-section">
+                    <h3 class="page-header">
+                        <code>style</code>-自定义层的样式
+                    </h3>
+                    <h4>类型：String</h4>
+                    <h4>可选</h4>
+                    <div class="bs-callout bs-callout-info">
+                        <p><code>
+                            kitUI.dialog({
+                                style: 'border:none; background-color:#78BA32; color:#fff;',
+                                content: '你绿了'
+                            })
+                        </code></p>
+                        <button class="btn btn-primary" id="style">style</button>
+                    </div>
+                </div>
+                <div class="bs-docs-section">
+                    <h3 class="page-header">
+                        <code>skin</code>-设定弹层风格
+                    </h3>
+                    <h4>类型：String</h4>
+                    <h4>可选：'footer' 或者 'tips'</h4>
+                    <div class="bs-callout bs-callout-info">
+                        <p><code>
+                            kitUI.dialog({
+                                skin: 'tips',
+                                content: 'tips: 2秒后会关闭',
+                                time: 2000
+                            })
+                        </code></p>
+                        <button class="btn btn-primary" id="skin-tips">skin_tips</button>
+                        <p></p>
+                        <p><code>
+                            kitUI.dialog({
+                                skin: 'footer',
+                                content: 'tips: 2秒后会关闭', 
+                                time: 2000
+                            })
+                        </code></p>
+                        <button class="btn btn-primary" id="skin-footer">skin_footer</button>
+                    </div>
+                </div>
+                <div class="bs-docs-section">
+                    <h3 class="page-header">
+                        <code>btn</code>-按钮
+                    </h3>
+                    <h4>类型：String || Array</h4>
+                    <div class="bs-callout bs-callout-info">
+                        <p><code>
+                            kitUI.dialog({
+                                content: '一个按钮',
+                                btn: 'yes'
+                            })
+                        </code></p>
+                        <button class="btn btn-primary" id="btn-one">a button</button>
+                        <p></p>
+                        <p><code>
+                             kitUI.dialog({ content: '两个按钮', btn: ['yes', 'no'] })
+                        </code></p>
+                        <button class="btn btn-primary" id="btn-two">two buttons</button>
+                        <p></p>
+                        <p>两个按钮时，参数类型为<code>Array</code>，默认数组第一个所以为确定按钮</p>
+                    </div>
+                </div>
+                <div class="bs-docs-section">
+                    <h3 class="page-header">
+                        <code>yes</code>-确认按钮回调
+                    </h3>
+                    <h4>类型：Function</h4>
+                    <div class="bs-callout bs-callout-info">
+                        <p>确认按钮的回调函数，需要手动调用<code>close()</code>方法来关闭弹层</p>
+                    </div>
+                </div>
+                <div class="bs-docs-section">
+                    <h3 class="page-header">
+                        <code>no</code>-取消按钮回调
+                    </h3>
+                    <h4>类型：Function</h4>
+                    <div class="bs-callout bs-callout-info">
+                        <p>取消按钮的回调函数，默认点击关闭弹层</p>
+                    </div>
+                </div>
+                <div class="bs-docs-section">
+                    <h3 class="page-header">
+                        <code>anim</code>-动画类型
+                    </h3>
+                    <h4>类型：String || Boolean</h4>
+                    <h4>可支持的支持动画配置：scale（默认）、up（从下往上弹出），如果不开启动画，设置false即可</h4>
+                    <div class="bs-callout bs-callout-info">
+                        <p>todo: 支持animate.css的动画</p>
+                        <p><code>
+                            kitUI.dialog({
+                                anim: 'up',
+                                content: '从下往上弹出'
+                            })
+                        </code></p>
+                        <button class="btn btn-primary" id="anim-up">anim_up</button>
+                    </div>
+                </div>
+                <div class="bs-docs-section">
+                    <h3 class="page-header">
+                        <code>shadeClose</code>
+                    </h3>
+                    <h4>类型：Boolean</h4>
+                    <h4>默认：true，是否点击遮罩时关闭层</h4>
+                    <div class="bs-callout bs-callout-info">
+                        <p><code>
+                            kitUI.dialog({
+                                shadeClose: false,
+                                content: '点击遮罩不能关闭我',
+                                btn: '点我关闭弹层'
+                            })
+                        </code></p>
+                        <button class="btn btn-primary" id="shadeClose">ban_shadeClose</button>
+                    </div>
+                </div>
+                <div class="bs-docs-section">
+                    <h3 class="page-header">
+                        <code>fixed</code>-是否固定层的位置
+                    </h3>
+                    <h4>类型：Boolean</h4>
+                </div>
+                <div class="bs-docs-section">
+                    <h3 class="page-header">
+                        <code>top</code>-控制层的纵坐标
+                    </h3>
+                    <h4>类型：Boolean</h4>
+                    <h4>默认：无，一般情况下不需要设置，因为层会始终垂直水平居中，只有当fixed: false时top才有效。</h4>
+                </div>
+                <div class="bs-docs-section">
+                    <h3 class="page-header" style="color: red;">
+                        一些简便封装
+                    </h3>
+                    <h4>为了方便使用封装了一些常用弹层</h4>
+                    <div class="bs-callout bs-callout-info">
+                        <p><code>
+                            kitUI.tips({
+                                content: 'tips样式',
+                                time: 2000
+                            })
+                        </code></p>
+                        <button class="btn btn-primary" id="tips">kitUI.tips</button>
+                        <p></p>
+                        <p><code>
+                            kitUI.img({
+                                img: 'vipc.cn/need/QRcode.png',
+                                title: '扫码进入公众号',
+                                shadeClose:'true'
+                            })
+                        </code></p>
+                        <p>常用于提示关注公众号，所以<code>shadeClose</code>默认为false</p>
+                        <button class="btn btn-primary" id="img">kitUI.img</button>
+                        <p></p>
+                        <p><code>
+                            kitUI.loading();
+                        </code></p>
+                        <p>coming soon</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="bs-docs-footer">
+        <div class="container">
+            <div class="row footer-botton text-center">
+                <a href="https://vipc.cn">唯彩看球</a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="./kitUI.js"></script>
+    <script type="text/javascript">
+        var kitUI = VIPC.kitUI;
+        var main = document.getElementById('main');
+        main.addEventListener('click', function (e) {
+            var target = e.target;
+            var _id = target.id;
+            console.log(_id);
+            var load = kitUI.dialog;
+
+            switch (_id) {
+                case 'type-dialog': {
+                    kitUI.dialog({
+                        content: 'dialog'
+                    });
+                    break;
+                };
+                case 'type-loading-show': {
+                    load({
+                        type: 'loading'
+                    })
+                    break;
+                };
+                case 'type-loading-close': {
+                    load({type: 'loading'}).close();
+                    break;
+                };
+                case 'content-html': {
+                    kitUI.dialog({ content: '<p style="color: red;">我是红色的信息</p>' });
+                    break;
+                };
+                case 'title-string': {
+                    kitUI.dialog({ title: '标题', content: '白色标题背景' });
+                    break;
+                };
+                case 'title-array': {
+                    kitUI.dialog({ title: ['标题', 'background-color: #eee;'], content: '灰色标题背景' });
+                    break;
+                };
+                case 'time': {
+                    kitUI.dialog({ time: 2000, content: '两秒后关闭' });
+                    break;
+                };
+                case 'style': {
+                    kitUI.dialog({ style: 'border:none; background-color:#78BA32; color:#fff;', content: '你绿了' });
+                    break;
+                };
+                case 'skin-tips': {
+                    kitUI.dialog({ skin: 'tips', content: 'tips: 2秒后会关闭', time: 2000 });
+                    break;
+                };
+                case 'skin-footer': {
+                    kitUI.dialog({ skin: 'footer', content: 'tips: 2秒后会关闭', time: 2000, anim: 'up' });
+                    break;
+                };
+                case 'btn-one': {
+                    kitUI.dialog({ content: '一个按钮', btn: 'yes' });
+                    break;
+                };
+                case 'btn-two': {
+                    var btn = kitUI.dialog({ 
+                        content: '两个按钮', 
+                        btn: ['进入vipc', 'no'],
+                        yes: function () {
+                            btn.close();
+                            alert('唯彩看球vipc.cn');
+                        }
+                     })
+                     break;
+                };
+                case 'anim-up': {
+                    kitUI.dialog({ anim: 'up', content: '从下往上弹出' });
+                    break;
+                };
+                case 'shadeClose': {
+                    kitUI.dialog({ shadeClose: false, content: '点击遮罩不能关闭我', btn: '点我关闭弹层' });
+                    break;
+                };
+                case 'tips': {
+                    kitUI.tips({ content: 'tips样式', time: '2000' });
+                    break;
+                };
+                case 'img': {
+                    kitUI.img({ img: './need/QRcode.png', title: '扫码进入公众号', shadeClose: 'true' });
+                    break;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
