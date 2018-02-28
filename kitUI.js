@@ -39,6 +39,7 @@
         , shadeClose: true
         , fixed: true
         , anim: 'scale'
+        , isFixed: true
     };
 
     var Madel = function (options) {
@@ -90,7 +91,7 @@
         }
 
         if (config.type === 'loading') {
-            config.shade = false;
+            // config.shade = false;
             if (!config.content) {
                 config.content = '<i></i><i class="vKitUI_madel_load"></i><i></i>'; 
             }
@@ -103,7 +104,7 @@
         madelBox.innerHTML = (config.shade ? '<div ' + (typeof config.shade === 'string' ? 'style="' + config.shade + '"' : '') + ' class="vKitUI_madel_shade"></div>' : '')
             + '<div class="vKitUI_madel_main" ' + (!config.fixed ? 'style="position:static;"' : '') + '>'
             + '<div class="vKitUI_madel_section">'
-            + '<div class="vKitUI_madel_child ' + (config.skin ? 'vKitUI_madel_' + config.skin + ' ' : '') + (config.className ? config.className : '') + ' ' + (config.anim ? 'vKitUI_madel_anim_' + config.anim : '') + '" ' + (config.style ? 'style="' + config.style + '"' : '') + '>'
+            + '<div class="vKitUI_madel_child animated ' + (config.skin ? 'vKitUI_madel_' + config.skin + ' ' : '') + (config.className ? config.className : '') + ' ' + (config.anim ? config.anim : '') + '" ' + (config.style ? 'style="' + config.style + '"' : '') + '>'
             + title
             + '<div class="vKitUI_madel_cont">' + config.content + '</div>'
             + button
@@ -116,7 +117,7 @@
         config.success && config.success(elem);
 
         _this.action(config, elem);
-        elem.addEventListener('touchmove', function (e) {
+        config.isFixed && elem.addEventListener('touchmove', function (e) {
             e.preventDefault();
         });
     };
@@ -138,10 +139,10 @@
     Madel.prototype.action = function (config, elem) {
         var _this = this;
         //自动关闭
-        if (config.time) {
+        if (config.expires) {
             ready.timer = setTimeout(function () {
                 _this.close(elem);
-            }, config.time);
+            }, config.expires);
         }
 
         //确认取消
@@ -175,24 +176,20 @@
 
     var kitUI = {};
     kitUI.tips = function (config) {
-        //实例
-        // kitUI.tips({
-        //     content: 'tips',
-        //     time: 2000,
-        // })
         var defaultTips = {
             skin: 'tips',
+            isFixed: false
         };
-        var options = ready.extend(defaultTips, config);
+        var options = ready.extend(config, defaultTips);
         return new Madel(options);
     };
 
-    kitUI.dialog = function (config) {
+    kitUI.madel = function (config) {
         var options = config || {};
         return new Madel(options);
     }
 
-    kitUI.img = function (config) {
+    kitUI.qrcode = function (config) {
         if (!config.img) {
             throw 'need img options';
         }
@@ -206,7 +203,13 @@
     }
 
     kitUI.loading = function (config) {
-
+        var defaultOptions = {
+            type: 'loading',
+            shade: false,
+        };
+        var config = config || {};
+        var options = ready.extend(config, defaultOptions);
+        return new Madel(options);
     }
 
     try {

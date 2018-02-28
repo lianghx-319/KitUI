@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>kitUI弹层组件</title>
+    <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
     crossorigin="anonymous">
     <link rel="stylesheet" href="./need/docs.min.css">
@@ -39,7 +40,7 @@
                     <h4>可选</h4>
                     <div class="bs-callout bs-callout-info">
                         <p><code>
-                            kitUI.dailog({
+                            kitUI.madel({
                                 type: 'dialog',
                                 content: 'dialog'
                             })
@@ -48,7 +49,7 @@
                         <p></p>
                         <p>
                             <code>
-                                                    kitUI.dailog({
+                                                    kitUI.madel({
                                                         type: 'loading',
                                                     })
                                                 </code>
@@ -66,7 +67,7 @@
                     <div class="bs-callout bs-callout-info" id="callout-helper-context-color-specificity">
                         <h4>content可以传入html字符串</h4>
                         <p><code>
-                            kitUI.dialog({
+                            kitUI.madel({
                                 content: '&lt;p style="color: red;"&gt;我是红色的信息&lt;/p&gt;'
                             })
                         </code></p>
@@ -82,7 +83,7 @@
                     <h4>可选，数组第二个参数是自定义标题样式</h4>
                     <div class="bs-callout bs-callout-info">
                         <p><code>
-                            kitUI.dialog({
+                            kitUI.madel({
                                 title: '标题',
                                 content: '白色标题背景'
                             })
@@ -90,7 +91,7 @@
                         <button class="btn btn-primary" id="title-string">title_string</button>
                         <p></p>
                         <p><code>
-                            kitUI.dialog({
+                            kitUI.madel({
                                 title: ['标题', 'background-color: #eee;'],
                                 content: '灰色标题背景'
                             })
@@ -100,19 +101,19 @@
                 </div>
                 <div class="bs-docs-section">
                     <h3 class="page-header">
-                        <code>time</code>-控制自动关闭时间
+                        <code>expires</code>-控制自动关闭时间
                     </h3>
                     <h4>类型：Number</h4>
                     <h4>默认不开启，单位毫秒</h4>
                     <h4>可选</h4>
                     <div class="bs-callout bs-callout-info">
                         <p><code>
-                            kitUI.dialog({
-                                time: 2000,
+                            kitUI.madel({
+                                expires: 2000,
                                 content: '两秒后关闭'
                             })
                         </code></p>
-                        <button class="btn btn-primary" id="time">time</button>
+                        <button class="btn btn-primary" id="time">expires</button>
                     </div>
                 </div>
                 <div class="bs-docs-section">
@@ -123,7 +124,7 @@
                     <h4>可选</h4>
                     <div class="bs-callout bs-callout-info">
                         <p><code>
-                            kitUI.dialog({
+                            kitUI.madel({
                                 style: 'border:none; background-color:#78BA32; color:#fff;',
                                 content: '你绿了'
                             })
@@ -139,19 +140,19 @@
                     <h4>可选：'footer' 或者 'tips'</h4>
                     <div class="bs-callout bs-callout-info">
                         <p><code>
-                            kitUI.dialog({
+                            kitUI.madel({
                                 skin: 'tips',
                                 content: 'tips: 2秒后会关闭',
-                                time: 2000
+                                expires: 2000
                             })
                         </code></p>
                         <button class="btn btn-primary" id="skin-tips">skin_tips</button>
                         <p></p>
                         <p><code>
-                            kitUI.dialog({
+                            kitUI.madel({
                                 skin: 'footer',
                                 content: 'tips: 2秒后会关闭', 
-                                time: 2000
+                                expires: 2000
                             })
                         </code></p>
                         <button class="btn btn-primary" id="skin-footer">skin_footer</button>
@@ -164,7 +165,7 @@
                     <h4>类型：String || Array</h4>
                     <div class="bs-callout bs-callout-info">
                         <p><code>
-                            kitUI.dialog({
+                            kitUI.madel({
                                 content: '一个按钮',
                                 btn: 'yes'
                             })
@@ -172,7 +173,7 @@
                         <button class="btn btn-primary" id="btn-one">a button</button>
                         <p></p>
                         <p><code>
-                             kitUI.dialog({ content: '两个按钮', btn: ['yes', 'no'] })
+                             kitUI.madel({ content: '两个按钮', btn: ['yes', 'no'] })
                         </code></p>
                         <button class="btn btn-primary" id="btn-two">two buttons</button>
                         <p></p>
@@ -204,14 +205,43 @@
                     <h4>类型：String || Boolean</h4>
                     <h4>可支持的支持动画配置：scale（默认）、up（从下往上弹出），如果不开启动画，设置false即可</h4>
                     <div class="bs-callout bs-callout-info">
-                        <p>todo: 支持animate.css的动画</p>
                         <p><code>
-                            kitUI.dialog({
+                            kitUI.madel({
                                 anim: 'up',
                                 content: '从下往上弹出'
                             })
                         </code></p>
                         <button class="btn btn-primary" id="anim-up">anim_up</button>
+                        <p></p>
+                        <p>现在支持animate.css动画类</p>
+                        <div class="btn-group" role="group" aria-label="...">
+                            <button type="button" class="btn btn-primary anim" id="bounceIn">bounceIn</button>
+                            <button type="button" class="btn btn-primary anim" id="fadeIn">fadeIn</button>
+                            <button type="button" class="btn btn-primary anim" id="rotateIn">rotateIn</button>
+                        </div>
+                        <p></p>
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon btn btn-primary" id="animateBtn">运行</span>
+                            <input type="text" class="form-control" placeholder="填入一个animate.css的动画类" aria-describedby="sizing-addon1" id="animate-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="bs-docs-section">
+                    <h3 class="page-header">
+                        <code>shade</code>
+                    </h3>
+                    <h4>类型：Boolean || String</h4>
+                    <h4>默认：true，传入css可以修改遮罩的样式</h4>
+                    <div class="bs-callout bs-callout-info">
+                        <p>
+                            <code>
+                                            kitUI.madel({
+                                                shade: 'background-color: rgba(0,0,0,.3)',
+                                                content: '现在透明度为0.3',
+                                            })
+                                        </code>
+                        </p>
+                        <button class="btn btn-primary" id="shade">shade</button>
                     </div>
                 </div>
                 <div class="bs-docs-section">
@@ -222,7 +252,7 @@
                     <h4>默认：true，是否点击遮罩时关闭层</h4>
                     <div class="bs-callout bs-callout-info">
                         <p><code>
-                            kitUI.dialog({
+                            kitUI.madel({
                                 shadeClose: false,
                                 content: '点击遮罩不能关闭我',
                                 btn: '点我关闭弹层'
@@ -253,25 +283,33 @@
                         <p><code>
                             kitUI.tips({
                                 content: 'tips样式',
-                                time: 2000
+                                expires: 2000
                             })
                         </code></p>
                         <button class="btn btn-primary" id="tips">kitUI.tips</button>
                         <p></p>
                         <p><code>
-                            kitUI.img({
+                            kitUI.qrcode({
                                 img: 'vipc.cn/need/QRcode.png',
                                 title: '扫码进入公众号',
                                 shadeClose:'true'
                             })
                         </code></p>
                         <p>常用于提示关注公众号，所以<code>shadeClose</code>默认为false</p>
-                        <button class="btn btn-primary" id="img">kitUI.img</button>
+                        <button class="btn btn-primary" id="img">kitUI.qrcode</button>
                         <p></p>
                         <p><code>
                             kitUI.loading();
                         </code></p>
-                        <p>coming soon</p>
+                        <button class="btn btn-primary" id="loading-default">kitUI.loading</button>
+                        <p></p>
+                        <p><code>
+                            kitUI.loading({
+                                content: '&lt;div class="loading"&gt; &lt;div class="cube1"&gt;&lt;/div&gt; &lt;div class="cube2"&gt;&lt;/div&gt; &lt;/div&gt;'
+                            })
+                        </code></p>
+                        <p>loading接口可以设置自定义的css3动画loading等，css需要自己加入</p>
+                        <button class="btn btn-primary" id="loading-defind">defind loading</button>
                     </div>
                 </div>
             </div>
@@ -293,12 +331,11 @@
         main.addEventListener('click', function (e) {
             var target = e.target;
             var _id = target.id;
-            console.log(_id);
-            var load = kitUI.dialog;
+            var load = kitUI.madel;
 
             switch (_id) {
                 case 'type-dialog': {
-                    kitUI.dialog({
+                    kitUI.madel({
                         content: 'dialog'
                     });
                     break;
@@ -314,39 +351,39 @@
                     break;
                 };
                 case 'content-html': {
-                    kitUI.dialog({ content: '<p style="color: red;">我是红色的信息</p>' });
+                    kitUI.madel({ content: '<p style="color: red;">我是红色的信息</p>' });
                     break;
                 };
                 case 'title-string': {
-                    kitUI.dialog({ title: '标题', content: '白色标题背景' });
+                    kitUI.madel({ title: '标题', content: '白色标题背景' });
                     break;
                 };
                 case 'title-array': {
-                    kitUI.dialog({ title: ['标题', 'background-color: #eee;'], content: '灰色标题背景' });
+                    kitUI.madel({ title: ['标题', 'background-color: #eee;'], content: '灰色标题背景' });
                     break;
                 };
                 case 'time': {
-                    kitUI.dialog({ time: 2000, content: '两秒后关闭' });
+                    kitUI.madel({ expires: 2000, content: '两秒后关闭' });
                     break;
                 };
                 case 'style': {
-                    kitUI.dialog({ style: 'border:none; background-color:#78BA32; color:#fff;', content: '你绿了' });
+                    kitUI.madel({ style: 'border:none; background-color:#78BA32; color:#fff;', content: '你绿了' });
                     break;
                 };
                 case 'skin-tips': {
-                    kitUI.dialog({ skin: 'tips', content: 'tips: 2秒后会关闭', time: 2000 });
+                    kitUI.madel({ skin: 'tips', content: 'tips: 2秒后会关闭', expires: 2000 });
                     break;
                 };
                 case 'skin-footer': {
-                    kitUI.dialog({ skin: 'footer', content: 'tips: 2秒后会关闭', time: 2000, anim: 'up' });
+                    kitUI.madel({ skin: 'footer', content: 'tips: 2秒后会关闭', expires: 2000, anim: 'up' });
                     break;
                 };
                 case 'btn-one': {
-                    kitUI.dialog({ content: '一个按钮', btn: 'yes' });
+                    kitUI.madel({ content: '一个按钮', btn: 'yes' });
                     break;
                 };
                 case 'btn-two': {
-                    var btn = kitUI.dialog({ 
+                    var btn = kitUI.madel({ 
                         content: '两个按钮', 
                         btn: ['进入vipc', 'no'],
                         yes: function () {
@@ -357,20 +394,52 @@
                      break;
                 };
                 case 'anim-up': {
-                    kitUI.dialog({ anim: 'up', content: '从下往上弹出' });
+                    kitUI.madel({ anim: 'up', content: '从下往上弹出' });
                     break;
                 };
                 case 'shadeClose': {
-                    kitUI.dialog({ shadeClose: false, content: '点击遮罩不能关闭我', btn: '点我关闭弹层' });
+                    kitUI.madel({ shadeClose: false, content: '点击遮罩不能关闭我', btn: '点我关闭弹层' });
                     break;
                 };
                 case 'tips': {
-                    kitUI.tips({ content: 'tips样式', time: '2000' });
+                    kitUI.tips({ content: 'tips样式', expires: '2000' });
                     break;
                 };
                 case 'img': {
-                    kitUI.img({ img: './need/QRcode.png', title: '扫码进入公众号', shadeClose: 'true' });
+                    kitUI.qrcode({ img: './need/QRcode.png', title: '扫码进入公众号', shadeClose: 'true' });
                     break;
+                };
+                case 'shade': {
+                    kitUI.madel({
+                        shade: 'background-color: rgba(0,0,0,.3)',
+                        content: '现在透明度为0.3',
+                    })
+                };
+                case 'animateBtn': {
+                    var input = document.getElementById('animate-input');
+                    var animClass = input.value;
+                    kitUI.madel({
+                        anim: animClass,
+                        content: animClass || null
+                    });
+                    break;
+                };
+                case 'loading-default': {
+                    kitUI.loading();
+                    break;
+                };
+                case 'loading-defind': {
+                    kitUI.loading({ content: '<div class="loading"> <div class="cube1"></div> <div class="cube2"></div> </div>' });
+                    break;
+                }
+                default: {
+                    if (target.className.indexOf('anim') > -1) {
+                        console.log(target.className.indexOf('anim'));
+                        kitUI.madel({
+                            anim: _id,
+                            content: _id
+                        });
+                    }
                 }
             }
         })
